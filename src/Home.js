@@ -1,4 +1,20 @@
-import React from "react";
-import "./App.css";
+import React, { useState }from "react";
+import AddDentist from './AddDentist'
+import UserList from "./UserList";
 
-export default () => <div>Home!</div>;
+export default function Home() {
+    const [contacts, setContacts] = useState([]);
+
+    const addContact = contact => {
+        setContacts([...contacts, contact]); 
+    }
+    console.log(contacts);
+
+    return(
+    <div>
+        <AddDentist addContact={addContact}/>
+        <UserList contacts={contacts}/>
+    </div>
+
+    )
+}
