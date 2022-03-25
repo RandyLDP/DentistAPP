@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import Home from "./Home";
-import UserList from "./UserList";
+
 
 
 const AddDentist = ({addContact}) => {
@@ -19,17 +18,19 @@ const AddDentist = ({addContact}) => {
 
  const handleSubmit = (e) =>{
          e.preventDefault();
-         addContact({ dentist });
-         setDentist({first_name: "",last_name: "",phone: "",email: ""});
+         addContact(dentist);
+         setDentist({first_name: "",last_name: "",number: "",email: ""});
  }
  
 
 return (
 <div>
+        
         <form onSubmit={handleSubmit}>
 
         <input 
         type="text"
+        required
         value = {dentist.first_name}
         placeholder="name"
         name = "first_name"
@@ -37,6 +38,7 @@ return (
         
         <input 
         type="text"
+        required
         value = {dentist.last_name}
         name="last_name"
         placeholder="surname"
@@ -44,13 +46,15 @@ return (
     
         <input 
         type="email"
+        required
         value = {dentist.email}
         name="email"
         placeholder="email"
         onChange={onChangeDentist}/>
 
         <input 
-        type="text"
+        type="number"
+        required
         value = {dentist.number}
         name="phone"
         placeholder="phone"
@@ -58,6 +62,7 @@ return (
         
         <button type="submit">Add</button>
         </form>
+        
 </div>
 )}
 
