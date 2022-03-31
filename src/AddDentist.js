@@ -24,7 +24,7 @@ const AddDentist = ({addContact}) => {
     const handleSick = (e) => {
             e.preventDefault();
             const isSick = dentist.isSick;
-        {sick && <p style={{color:"red"}}> </p>}}
+        {isSick && <p style={{color:"red"}}> </p>}}
 
    
    return (
@@ -65,7 +65,7 @@ const AddDentist = ({addContact}) => {
            onChange={onChangeDentist}/>
            
            <button type="submit">Add Dentist</button>
-           <button handleSick={isSick}>Sick!</button>
+           <button onClick={handleSick}>Sick!</button>
            </form>
            
    </div>
