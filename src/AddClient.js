@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-
+import {clients} from "./utils"
+import  "./userlist.css"
 
 const AddClient = ({addContact}) => {
     const [client, setClient] = useState({
@@ -20,16 +21,23 @@ const AddClient = ({addContact}) => {
             addContact(client);
             setClient({first_name: "",last_name: "",number: "",email: ""});
     }
+    const isSick = client.isSick
+
+    const handleSick = () =>{
+        setClient(client => ({ ...client, [isSick]: !client[isSick]})
+        )
+        console.log('working')
+
+    }
     
 
-   
    return (
    <div>
+       
         <form onSubmit={handleSubmit}>
    
            <input 
            type="text"
-           required
            value = {client.first_name}
            placeholder="name"
            name = "first_name"
@@ -37,7 +45,6 @@ const AddClient = ({addContact}) => {
            
            <input 
            type="text"
-           required
            value = {client.last_name}
            name="last_name"
            placeholder="surname"
@@ -45,7 +52,6 @@ const AddClient = ({addContact}) => {
        
            <input 
            type="email"
-           required
            value = {client.email}
            name="email"
            placeholder="email"
@@ -53,7 +59,6 @@ const AddClient = ({addContact}) => {
    
            <input 
            type="number"
-           required
            value = {client.number}
            name="phone"
            placeholder="phone"
@@ -62,6 +67,17 @@ const AddClient = ({addContact}) => {
            <button type="submit">Add Client</button>
            
            </form>
+           <tbody className="tablerow">
+            {clients.map((client) => (
+                <tr className="table-row" key={client.phone} style={{textDecoration: isSick && "line-trough"}}>
+                    <td className=" col col-1">{client.first_name}</td>
+                    <td className=" col col-2">{client.last_name}</td>
+                    <td className=" col col-3">{client.email}</td>
+                    <td className=" col col-4">{client.phone}</td>
+                    <button onClick={() => handleSick()}>Sick</button>
+                </tr> )
+                )}
+            </tbody>
            
    </div>
    )}

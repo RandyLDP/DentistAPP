@@ -42,3 +42,8 @@ td {
 .col-4 {
   flex-basis: 25%;
 }
+
+.isSick {
+  color: rgb(223, 77, 77);
+  text-decoration: line-through;
+}

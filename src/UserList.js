@@ -12,9 +12,8 @@ export default function UserList ({contacts}){
                     <th className=" col col-2">Surname</th>
                     <th className=" col col-3">Email</th>
                     <th className=" col col-4">phone</th>
-
                 </tr>
-            </thead>
+            </thead>      
             <tbody>
                 {contacts.map(contacts =>
                     <tr  className="table-row" key={contacts.phone}>
@@ -22,6 +21,7 @@ export default function UserList ({contacts}){
                         <td className=" col col-2">{contacts.last_name}</td>
                         <td className=" col col-3">{contacts.email}</td>
                         <td className=" col col-4">{contacts.phone}</td>
+                        <button>Sick</button>
                     </tr>
                 )}
             </tbody>

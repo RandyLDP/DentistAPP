@@ -21,7 +21,7 @@ const AddDentist = ({addContact}) => {
             setDentist({first_name: "",last_name: "",number: "",email: ""});
     }
     
-    const handleSick = (e) => {
+   const handleSick = (e) => {
             e.preventDefault();
             const isSick = dentist.isSick;
         {isSick && <p style={{color:"red"}}> </p>}}

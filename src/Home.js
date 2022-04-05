@@ -15,10 +15,11 @@ export default function Home(handleSick) {
 
     return(
     <div>
+        <UserList contacts={contacts}/>
         <AddClient addContact={addContact}/>
         <AddAssistant addContact={addContact} />
         <AddDentist addContact={addContact} handleSick={handleSick}/>
-        <UserList contacts={contacts}/>
+        
     </div>
 
     )

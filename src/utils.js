@@ -48,7 +48,7 @@ export const dentists =[
       }
   ]
 
-  export const clients = [
+export const clients = [
       {
       first_name: "Augie",
       last_name: "Denton",
