@@ -1,5 +1,5 @@
 import React from 'react';
-import userlist from './userlist.css'
+import  './userlist.css'
 
 export default function UserList ({contacts}){
     

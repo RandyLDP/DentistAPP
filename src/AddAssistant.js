@@ -1,16 +1,9 @@
 import React, {useState} from "react";
-
+import {assistants} from "./utils"
 
 
 const AddAssistant = ({addContact}) => {
- const [assistant, setAssistant] = useState({
-         first_name: "",
-         last_name: "",
-         phone: "",
-         email: "",
-         isSick: false,
-         id: Date.now()
- })
+ const [assistant, setAssistant] = useState(assistants)
 
  const onChangeAssistant = (e) =>{
          setAssistant({...assistant, [e.target.name] : e.target.value})
@@ -21,6 +14,18 @@ const AddAssistant = ({addContact}) => {
          addContact(assistant);
          setAssistant({first_name: "",last_name: "",number: "",email: ""});
  }
+ const isSick = assistant.isSick
+ const handleSick = (entry, idx) => {
+        setAssistant((assistants) => [
+          ...assistants.slice(0, idx),
+          { ...assistants[idx], [entry[0]]: entry[1] },
+          ...assistants.slice(idx + 1, assistants.length),
+        ]);
+        setAssistant(prevState => {
+            console.log("prevState",prevState)
+            return prevState
+        })
+      };
  
 
 return (
@@ -62,6 +67,23 @@ return (
         
         <button type="submit">Add Assistant</button>
         </form>
+        <tbody  className="tablerow">
+            {assistants.map((assistant, idx) => (
+                <tr className="table-row" 
+                    style={{backgroundColor: isSick && 'red'}} 
+                    key={assistant.phone}>
+                        <td className=" col col-1">{assistant.first_name}</td>
+                        <td className=" col col-2">{assistant.last_name}</td>
+                        <td className=" col col-3">{assistant.email}</td>
+                        <td className=" col col-4">{assistant.phone}</td>
+                        <td>
+                            <button onClick={() => handleSick(['isSick', !isSick], idx)}>
+                            Set {isSick ? 'Healthy' : 'Sick'}
+                            </button>
+                        </td>
+                </tr> )
+                )}
+        </tbody>
         
 </div>
 )}
